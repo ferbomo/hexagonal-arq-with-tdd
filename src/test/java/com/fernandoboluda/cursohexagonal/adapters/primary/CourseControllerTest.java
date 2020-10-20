@@ -13,7 +13,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 
 @ExtendWith(MockitoExtension.class)
 class CourseControllerTest {
@@ -41,7 +40,6 @@ class CourseControllerTest {
   void shouldSaveCourse() {
     sut.saveCourse(courseRequest);
 
-    verify(converter, times(1)).convertToCourse(courseRequest);
     verify(courseService, times(1)).saveCourse(any());
   }
 

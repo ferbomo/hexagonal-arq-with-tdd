@@ -5,7 +5,7 @@ import com.fernandoboluda.cursohexagonal.CourseRequest;
 import com.fernandoboluda.cursohexagonal.converters.CourseRequestToCourseConverter;
 import com.fernandoboluda.cursohexagonal.domain.Course;
 import com.fernandoboluda.cursohexagonal.ports.primary.CourseService;
-import lombok.AllArgsConstructor;
+import org.mapstruct.factory.Mappers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,13 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@AllArgsConstructor
 @RequestMapping("/courses")
 public class CourseController {
 
+  public CourseController(CourseService courseService) {
+    this.courseService = courseService;
+  }
+
   private final CourseService courseService;
 
-  private final CourseRequestToCourseConverter converter;
+  private final CourseRequestToCourseConverter converter = Mappers
+      .getMapper(CourseRequestToCourseConverter.class);
 
   @GetMapping
   public List<Course> getAllCourses() {
@@ -31,7 +35,7 @@ public class CourseController {
 
   @PostMapping
   public ResponseEntity<Course> saveCourse(@RequestParam CourseRequest request) {
-    Course courseConverted = converter.convertToCourse(request);
+    Course courseConverted = converter.convertCourseRequest(request);
     return courseService.saveCourse(courseConverted);
   }
 }

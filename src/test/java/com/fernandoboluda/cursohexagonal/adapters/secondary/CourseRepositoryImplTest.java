@@ -6,7 +6,6 @@ import com.fernandoboluda.cursohexagonal.domain.Course;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
@@ -14,8 +13,7 @@ import java.util.List;
 @ExtendWith(MockitoExtension.class)
 class CourseRepositoryImplTest {
 
-  @InjectMocks
-  private CourseRepositoryImpl courseRepository;
+  private final CourseRepositoryImpl courseRepository = new CourseRepositoryImpl();
 
   @BeforeEach
   public void setup() {

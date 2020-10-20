@@ -2,12 +2,12 @@ package com.fernandoboluda.cursohexagonal.adapters.secondary;
 
 import com.fernandoboluda.cursohexagonal.domain.Course;
 import com.fernandoboluda.cursohexagonal.ports.secondary.CourseRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+@Component
 public class CourseRepositoryImpl implements CourseRepository {
 
   private final List<Course> courses = new ArrayList<>();
@@ -23,7 +23,7 @@ public class CourseRepositoryImpl implements CourseRepository {
     return course;
   }
 
-  public void addCourse(Course course){
+  public void addCourse(Course course) {
     courses.add(course);
   }
 }
