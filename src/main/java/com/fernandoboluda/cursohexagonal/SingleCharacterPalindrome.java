@@ -9,9 +9,9 @@ public class SingleCharacterPalindrome {
     if (isAPalindrome(text)) {
       return "OK";
     }
-    for (int i=0; i<text.length();i++){
+    for (int i = 0; i < text.length(); i++) {
       String test = new StringBuilder(text).deleteCharAt(i).toString();
-      if(isAPalindrome(test)){
+      if (isAPalindrome(test)) {
         return "remove one";
       }
     }
@@ -19,7 +19,7 @@ public class SingleCharacterPalindrome {
   }
 
   private static boolean isAPalindrome(String text) {
-    for (int i = 0, j = text.length()-1; i<j; i++, j--) {
+    for (int i = 0, j = text.length() - 1; i < j; i++, j--) {
       if (text.charAt(i) != text.charAt(j)) {
         return false;
       }
